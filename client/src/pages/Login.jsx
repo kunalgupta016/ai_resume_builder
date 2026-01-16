@@ -26,9 +26,10 @@ const Login = () => {
             localStorage.setItem('token',data.token)
             toast.success(data.message)
         } catch (error) {
-            toast(error?.response?.data?.message || error.message)
+            console.error('Login error:', error)
+            const errorMsg = error?.response?.data?.message || error?.message || 'Network error - please check your connection'
+            toast.error(errorMsg)
         }
-
     }
 
     const handleChange = (e) => {
