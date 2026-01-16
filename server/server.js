@@ -20,11 +20,7 @@ app.use('/api/users',userRouter);
 app.use('/api/resumes',resumeRouter);
 app.use('/api/ai',aiRouter)
 
-// Only listen if running locally (not on Vercel)
-if (process.env.NODE_ENV !== 'production') {
-    app.listen(PORT,()=>{
-        console.log(`Server is running on port ${PORT}`);
-    });
-}
-
-export default app;
+// Always listen (works on Render and Vercel)
+app.listen(PORT,()=>{
+    console.log(`Server is running on port ${PORT}`);
+});
