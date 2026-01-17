@@ -112,7 +112,7 @@ export const updateResume = async (req,res) =>{
 
         
 
-        const resume = await Resume.findOneAndUpdate({userId, _id:resumeId},resumeDataCopy,{new:true})
+        const resume = await Resume.findOneAndUpdate({userId, _id:resumeId},{$set: resumeDataCopy},{new:true})
         return res.status(200).json({message:'Saved Successfully', resume});
     } catch (error) {
         return res.status(400).json({message: error.message})
